@@ -20,5 +20,21 @@ class BookscraperPipeline:
         else:
             num_val = split_val[1].split(' ')
             adapter['availability'] = int(num_val[0])
+
+        star_rating = adapter.get('rating')
+        star_rating = star_rating[0]
+        split_star_val = star_rating.split(' ')
+        if split_star_val[1] == 'Zero':
+            adapter['rating'] = 0
+        elif split_star_val[1] == 'One':
+            adapter['rating'] = 1
+        elif split_star_val[1] == 'Two':
+            adapter['rating'] = 2
+        elif split_star_val[1] == 'Three':
+            adapter['rating'] = 3 
+        elif split_star_val[1] == 'Four':
+            adapter['rating'] = 4
+        elif split_star_val[1] == 'Five':
+            adapter['rating'] = 5
         return item
     
